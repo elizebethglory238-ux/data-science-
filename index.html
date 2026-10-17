@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Glory Elizebeth Saji — Data Science student at the University of Chester, building skills in data analysis, Python, SQL and technology.">
+  <title>Glory Elizebeth Saji | Data Science Portfolio</title>
+  <style>
+    :root {
+      --bg: #090909;
+      --panel: #121212;
+      --panel-2: #181818;
+      --text: #f5f5f5;
+      --muted: #b6b6b6;
+      --red: #f04444;
+      --red-dark: #a91520;
+      --line: #292929;
+      --gold: #e7bd68;
+      --max: 1120px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    body {
+      margin: 0; background: var(--bg); color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.65;
+    }
+    a { color: inherit; }
+    a:focus-visible, button:focus-visible { outline: 3px solid var(--gold); outline-offset: 4px; }
+    .wrap { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
+    .topbar {
+      position: sticky; top: 0; z-index: 10; background: rgba(9,9,9,.92);
+      backdrop-filter: blur(14px); border-bottom: 1px solid var(--line);
+    }
+    .nav { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .brand { text-decoration: none; font-weight: 850; letter-spacing: -.04em; font-size: 1.1rem; }
+    .brand span { color: var(--red); }
+    .navlinks { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
+    .navlinks a { font-size: .88rem; color: var(--muted); text-decoration: none; }
+    .navlinks a:hover { color: white; }
+    .menu-button { display: none; background: transparent; border: 1px solid var(--line); color: white; padding: 8px 12px; border-radius: 8px; }
+    .hero { padding: 88px 0 72px; overflow: hidden; position: relative; }
+    .hero:before {
+      content: ""; position: absolute; width: 500px; height: 500px; border-radius: 50%;
+      right: -180px; top: -180px; background: radial-gradient(circle, rgba(240,68,68,.17), transparent 68%); pointer-events: none;
+    }
+    .hero-grid { display: grid; grid-template-columns: 1.35fr .65fr; gap: 60px; align-items: center; position: relative; }
+    .eyebrow { text-transform: uppercase; letter-spacing: .19em; font-size: .76rem; color: var(--red); font-weight: 800; }
+    h1 { font-size: clamp(2.7rem, 6vw, 5.3rem); line-height: 1.02; letter-spacing: -.065em; margin: 15px 0 18px; }
+    h1 .accent { color: var(--red); }
+    .hero h2 { font-size: clamp(1.05rem, 2vw, 1.35rem); color: #e1e1e1; font-weight: 600; margin: 0 0 15px; }
+    .lead { color: var(--muted); font-size: 1.06rem; max-width: 660px; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; border-radius: 9px; padding: 12px 18px; font-weight: 750; text-decoration: none; border: 1px solid var(--line); transition: transform .2s, background .2s; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { background: var(--red); color: white; border-color: var(--red); }
+    .btn-secondary { background: #151515; color: white; }
+    .photo-frame { width: min(100%, 340px); justify-self: end; position: relative; }
+    .photo-frame:before { content: ""; position: absolute; inset: 16px -16px -16px 16px; border: 2px solid var(--red); border-radius: 22px; }
+    .photo-frame img { display: block; width: 100%; aspect-ratio: 4/5; object-fit: cover; object-position: center 28%; border-radius: 22px; position: relative; border: 1px solid #444; background: var(--panel); }
+    section { padding: 72px 0; border-top: 1px solid var(--line); }
+    .section-head { margin-bottom: 30px; max-width: 740px; }
+    .kicker { color: var(--red); font-weight: 800; font-size: .76rem; text-transform: uppercase; letter-spacing: .18em; }
+    h2.section-title { font-size: clamp(2rem, 4vw, 3rem); line-height: 1.1; letter-spacing: -.045em; margin: 8px 0 12px; }
+    .section-intro { color: var(--muted); margin: 0; }
+    .about-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 24px; }
+    .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 24px; }
+    .panel p { color: var(--muted); margin-top: 0; }
+    .facts { display: grid; gap: 12px; }
+    .fact { padding: 14px 0; border-bottom: 1px solid var(--line); }
+    .fact:last-child { border-bottom: 0; }
+    .fact strong { display: block; color: white; }
+    .fact span { color: var(--muted); font-size: .94rem; }
+    .skill-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .skill-card h3, .card h3 { margin: 0 0 10px; font-size: 1.1rem; }
+    .skill-card p { margin: 0; color: var(--muted); font-size: .95rem; }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+    .tag { font-size: .82rem; color: #eee; border: 1px solid #363636; background: #1b1b1b; border-radius: 100px; padding: 5px 10px; }
+    .tag.red { border-color: rgba(240,68,68,.5); color: #ffb3b3; background: rgba(240,68,68,.08); }
+    .timeline { display: grid; gap: 16px; }
+    .experience { display: grid; grid-template-columns: 220px 1fr; gap: 24px; }
+    .exp-meta { border-left: 3px solid var(--red); padding-left: 16px; }
+    .exp-meta .role { font-weight: 800; line-height: 1.35; }
+    .exp-meta .company, .exp-meta .date { color: var(--muted); font-size: .9rem; }
+    .experience h3 { margin: 0 0 10px; }
+    .experience ul, .card ul { margin: 0; padding-left: 20px; color: var(--muted); }
+    li { margin: 7px 0; }
+    .learned { margin-top: 14px; padding: 13px 15px; background: #1b1112; border-left: 3px solid var(--red); border-radius: 0 8px 8px 0; color: #e7dada; }
+    .learned strong { color: white; }
+    .project-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .card { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 24px; display: flex; flex-direction: column; }
+    .card .number { color: var(--red); font-weight: 900; letter-spacing: .12em; font-size: .78rem; margin-bottom: 10px; }
+    .card p { color: var(--muted); margin: 0 0 10px; }
+    .card .learned { margin-top: auto; }
+    .status { display: inline-block; width: fit-content; color: var(--gold); border: 1px solid rgba(231,189,104,.35); background: rgba(231,189,104,.08); padding: 4px 9px; border-radius: 100px; font-size: .78rem; margin-bottom: 12px; }
+    .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .education-stat { display: flex; gap: 15px; align-items: flex-start; }
+    .stat { min-width: 70px; color: var(--red); font-weight: 900; font-size: 1.5rem; line-height: 1.2; }
+    .education-stat p { margin: 5px 0 0; color: var(--muted); }
+    .programme-list { display: grid; gap: 14px; }
+    .programme { padding: 17px 0; border-bottom: 1px solid var(--line); }
+    .programme:last-child { border-bottom: 0; }
+    .programme h3 { font-size: 1rem; margin: 0 0 5px; }
+    .programme p { margin: 0; color: var(--muted); font-size: .94rem; }
+    .contact-box { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 24px; background: linear-gradient(120deg, #191010, #121212 70%); border: 1px solid #422123; border-radius: 18px; padding: 32px; }
+    .contact-box p { color: var(--muted); margin-bottom: 0; }
+    .contact-links { display: flex; flex-wrap: wrap; gap: 10px; }
+    footer { padding: 28px 0; color: #888; font-size: .85rem; }
+    .small-note { color: #888; font-size: .84rem; }
+    @media (max-width: 800px) {
+      .hero { padding-top: 58px; }
+      .hero-grid, .about-grid, .experience, .contact-box { grid-template-columns: 1fr; }
+      .photo-frame { justify-self: start; width: min(72%, 290px); margin: 12px 0 10px 8px; }
+      .skill-grid { grid-template-columns: repeat(2, 1fr); }
+      .experience { gap: 14px; }
+      .exp-meta { padding-bottom: 6px; }
+      .contact-box { align-items: start; }
+      .nav { align-items: flex-start; padding: 18px 0; }
+      .navlinks { gap: 12px; }
+    }
+    @media (max-width: 560px) {
+      .wrap { width: min(var(--max), calc(100% - 28px)); }
+      .nav { display: block; }
+      .navlinks { margin-top: 12px; gap: 10px 14px; }
+      .navlinks a { font-size: .82rem; }
+      .skill-grid, .project-grid, .edu-grid { grid-template-columns: 1fr; }
+      section { padding: 54px 0; }
+      .panel, .card { padding: 19px; }
+      .contact-box { padding: 22px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <nav class="nav wrap" aria-label="Main navigation">
+      <a class="brand" href="#home">GLORY<span>.</span></a>
+      <div class="navlinks">
+        <a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a>
+        <a href="#experience">Experience</a><a href="#education">Education</a><a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home" style="border-top:0">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow">Data Science • Analytics • Technology</div>
+          <h1>Glory Elizebeth <span class="accent">Saji</span></h1>
+          <h2>Data Science Student | Aspiring Data Scientist</h2>
+          <p class="lead">I’m a BSc Data Science student at the University of Chester, developing practical skills in data analysis, Python, SQL, databases and technology. I’m seeking a 2027 industrial placement where I can learn from real-world challenges and contribute with curiosity, accuracy and a strong willingness to grow.</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="#projects">Explore my projects</a>
+            <a class="btn btn-secondary" href="#experience">My experience</a>
+            <a class="btn btn-secondary" href="https://www.linkedin.com/in/glory-elizebeth-saji-425ba0321/" target="_blank" rel="noopener noreferrer">View LinkedIn ↗</a>
+          </div>
+          <div class="tags"><span class="tag red">Placement 2027</span><span class="tag">University of Chester</span><span class="tag">Expected graduation: 2028</span></div>
+        </div>
+        <div class="photo-frame">
+          <img src="assets/glory-photo.jpg" alt="Professional portrait of Glory Elizebeth Saji">
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="wrap">
+        <div class="section-head"><div class="kicker">01 / About me</div><h2 class="section-title">Curious about data. Focused on impact.</h2>
+          <p class="section-intro">My goal is to turn data into clear insights and useful solutions while continuing to build my technical and professional skills.</p></div>
+        <div class="about-grid">
+          <div class="panel">
+            <p>I’m currently studying Data Science and exploring how data can support better decisions. Through university projects, training and work experience, I’m developing a combination of technical knowledge and transferable skills.</p>
+            <p>I value careful checking, clear communication, collaboration and learning from feedback. My previous roles have taught me to work accurately, follow processes, manage competing priorities and understand the importance of reliable information.</p>
+            <p>I’m particularly interested in data analysis, business intelligence, reporting and opportunities to keep learning in a real workplace.</p>
+          </div>
+          <div class="panel facts">
+            <div class="fact"><strong>Degree</strong><span>BSc Data Science</span></div>
+            <div class="fact"><strong>University</strong><span>University of Chester</span></div>
+            <div class="fact"><strong>Academic performance</strong><span>Year 1 average: 66.5% (2:1 level)</span></div>
+            <div class="fact"><strong>Looking for</strong><span>Industrial placement opportunities for 2027</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="wrap">
+        <div class="section-head"><div class="kicker">02 / Technical toolkit</div><h2 class="section-title">Skills I’m building</h2>
+          <p class="section-intro">A transparent overview of my current skills and areas of development. I’m continuing to strengthen these through study and practical work.</p></div>
+        <div class="skill-grid">
+          <article class="panel skill-card"><h3>Data analysis</h3><p>Working with data, organising information, checking quality, exploring patterns and communicating findings clearly.</p><div class="tags"><span class="tag">Data cleaning</span><span class="tag">Exploratory analysis</span><span class="tag">Data quality</span></div></article>
+          <article class="panel skill-card"><h3>Programming</h3><p>Using programming languages in learning and project contexts, with continued practice to improve confidence.</p><div class="tags"><span class="tag">Python</span><span class="tag">R</span><span class="tag">JavaScript</span></div></article>
+          <article class="panel skill-card"><h3>SQL & databases</h3><p>Designing relational database structures and learning how queries, relationships and constraints support reliable data.</p><div class="tags"><span class="tag">SQL</span><span class="tag">ER diagrams</span><span class="tag">Normalisation</span></div></article>
+          <article class="panel skill-card"><h3>Web development</h3><p>Building and understanding web application components through university group project work.</p><div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">Flask</span></div></article>
+          <article class="panel skill-card"><h3>Tools & workflow</h3><p>Using collaborative development workflows and learning to document, test and improve work.</p><div class="tags"><span class="tag">GitLab</span><span class="tag">Excel</span><span class="tag">Documentation</span></div></article>
+          <article class="panel skill-card"><h3>Professional skills</h3><p>Applying attention to detail, communication, teamwork, adaptability and prioritisation across study and work.</p><div class="tags"><span class="tag">Problem-solving</span><span class="tag">Teamwork</span><span class="tag">Communication</span></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="wrap">
+        <div class="section-head"><div class="kicker">03 / Selected work</div><h2 class="section-title">Projects & practical learning</h2>
+          <p class="section-intro">University and learning projects that show how I apply concepts, work through problems and develop my technical skills.</p></div>
+        <div class="project-grid">
+          <article class="card">
+            <div class="number">PROJECT 01</div><h3>Restaurant Ordering Database</h3>
+            <p>Designed a relational database concept for a restaurant ordering system, identifying entities, attributes, relationships and primary/foreign keys.</p>
+            <ul><li>Created an ERD to represent the structure and relationships.</li><li>Worked with SQL and database design concepts.</li><li>Considered normalisation and data integrity.</li></ul>
+            <div class="learned"><strong>What I learned:</strong> How structured data, clear relationships and validation help keep information consistent and useful.</div>
+            <div class="tags"><span class="tag">SQL</span><span class="tag">Database design</span><span class="tag">ERD</span></div>
+          </article>
+          <article class="card">
+            <div class="number">PROJECT 02</div><h3>Kennel Management Web Application</h3>
+            <p>Collaborated on a university web application project using front-end technologies and Python with Flask.</p>
+            <ul><li>Contributed to a project involving HTML, CSS, JavaScript and Flask.</li><li>Used GitLab as part of collaborative development.</li><li>Worked with teammates to bring project components together.</li></ul>
+            <div class="learned"><strong>What I learned:</strong> How to collaborate through version control, connect application components and approach debugging methodically.</div>
+            <div class="tags"><span class="tag">Python</span><span class="tag">Flask</span><span class="tag">HTML/CSS/JS</span><span class="tag">GitLab</span></div>
+          </article>
+          <article class="card">
+            <div class="number">PRACTICAL EXPERIENCE</div><h3>Barclays Data Analyst Virtual Experience</h3>
+            <p>Completed a virtual work experience focused on data analysis in a business scenario, including examining incident-related data and communicating insights.</p>
+            <div class="learned"><strong>What I learned:</strong> To look for patterns, organise findings and connect analysis to operational questions. This was a virtual experience, not employment at Barclays.</div>
+            <div class="tags"><span class="tag">Data analysis</span><span class="tag">Visualisation</span><span class="tag">Business insights</span></div>
+          </article>
+          <article class="card">
+            <div class="number">ONGOING DEVELOPMENT</div><h3>Data Analysis & Python Practice</h3>
+            <p>Continuing to strengthen my understanding of data analysis, programming and statistical concepts through coursework and independent learning.</p>
+            <div class="learned"><strong>What I’m learning:</strong> To break down unfamiliar problems, check assumptions, interpret results carefully and explain my approach clearly.</div>
+            <div class="tags"><span class="tag">Python</span><span class="tag">R</span><span class="tag">Statistics</span><span class="tag">Analytical thinking</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="wrap">
+        <div class="section-head"><div class="kicker">04 / Professional experience</div><h2 class="section-title">What I did — and what I learned</h2>
+          <p class="section-intro">Each role has helped me build skills that matter in data-focused work: accuracy, clear communication, reliable processes, teamwork and understanding people's needs.</p></div>
+        <div class="timeline">
+          <article class="panel experience">
+            <div class="exp-meta"><div class="role">Data Entry Assistant</div><div class="company">Akshaya</div><div class="date">2023–2024</div></div>
+            <div><h3>Maintaining accurate and reliable records</h3><ul><li>Entered and updated information while paying attention to detail.</li><li>Checked records for errors and helped keep information organised.</li><li>Worked carefully to meet deadlines and follow established processes.</li></ul><div class="learned"><strong>What I learned:</strong> Accuracy and data quality matter. Checking information, spotting inconsistencies and keeping records organised are transferable to data cleaning, validation and analysis.</div></div>
+          </article>
+          <article class="panel experience">
+            <div class="exp-meta"><div class="role">Front of House Team Member</div><div class="company">Mitchells & Butlers — The Wheatsheaf Inn</div><div class="date">Current</div></div>
+            <div><h3>Customer service in a busy team environment</h3><ul><li>Support guests and communicate clearly with customers and colleagues.</li><li>Coordinate tasks with the team and prioritise requests during busy periods.</li><li>Work to service standards while adapting to changing needs.</li></ul><div class="learned"><strong>What I learned:</strong> To communicate clearly, manage competing priorities and stay composed under pressure. These skills support teamwork, stakeholder communication and presenting findings to non-technical audiences.</div></div>
+          </article>
+          <article class="panel experience">
+            <div class="exp-meta"><div class="role">High-Ticket Sales / Closing</div><div class="company">Sales & mentorship experience</div><div class="date">Experience / development</div></div>
+            <div><h3>Understanding needs and communicating value</h3><ul><li>Developing the use of discovery questions to understand a person's goals and needs.</li><li>Practising clear explanations, active listening and responding to concerns.</li><li>Learning to communicate value in a respectful, customer-focused way.</li></ul><div class="learned"><strong>What I learned:</strong> To listen carefully, ask useful questions and tailor communication to the audience — helpful when gathering requirements and explaining data insights. This section can be edited to reflect the exact work and training completed.</div></div>
+          </article>
+          <article class="panel experience">
+            <div class="exp-meta"><div class="role">Production Operative</div><div class="company">Ourvita, Runcorn</div><div class="date">2025</div></div>
+            <div><h3>Following processes and maintaining quality</h3><ul><li>Worked on production-line tasks and followed procedures.</li><li>Paid attention to quality checks and consistency during routine work.</li><li>Coordinated with colleagues to keep workflow moving safely and efficiently.</li></ul><div class="learned"><strong>What I learned:</strong> Consistent processes and quality checks prevent errors. This reinforces the importance of validation, repeatable workflows and careful checking when working with data.</div></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <div class="wrap">
+        <div class="section-head"><div class="kicker">05 / Education & development</div><h2 class="section-title">Building knowledge continuously</h2>
+          <p class="section-intro">My degree gives me the foundation; projects, courses and professional programmes help me keep developing.</p></div>
+        <div class="edu-grid">
+          <div class="panel">
+            <div class="education-stat"><div class="stat">BSc</div><div><h3>Data Science</h3><p>University of Chester · 2025–2028 (expected)</p><p>Year 1 average: 66.5%. Module results include Databases (75%) and Fundamentals of Computing (80%).</p></div></div>
+            <div class="tags"><span class="tag">Data Analytics and Stochastic Processes</span><span class="tag">Ethics and Principles of Data Science</span><span class="tag">Linear Programming and Optimisation</span></div>
+          </div>
+          <div class="panel">
+            <h3>Courses, programmes & virtual experience</h3>
+            <div class="programme-list">
+              <div class="programme"><h3>McKinsey.org Forward Programme</h3><span class="status">In progress · 10 weeks</span><p>Developing practical professional skills, including structured problem-solving, communication, adaptability, resilience and working effectively with others. Update this description to match the modules you have completed.</p></div>
+              <div class="programme"><h3>Data Science Internship — Codelabs</h3><span class="status">In progress · 10 Oct–10 Nov 2026</span><p>Developing practical data science experience through internship activities. Add specific tasks and tools as you complete them.</p></div>
+              <div class="programme"><h3>Python Course — Simplilearn</h3><span class="status">Completed</span><p>Built foundational Python knowledge through structured learning and practice.</p></div>
+              <div class="programme"><h3>Alison — Working with Data</h3><p>Data-focused learning. Keep the course title and completion status aligned with your certificate.</p></div>
+              <div class="programme"><h3>Barclays Data Analyst Virtual Experience</h3><p>Virtual work experience exploring data analysis and business-focused insights.</p></div>
+              <div class="programme"><h3>Google Data Analytics Professional Certificate</h3><p>Add or update the status here if you want to include it; only mark completed once you have earned the certificate.</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="strengths">
+      <div class="wrap">
+        <div class="section-head"><div class="kicker">06 / Transferable strengths</div><h2 class="section-title">Skills beyond the code</h2>
+          <p class="section-intro">My work experience has helped me develop habits that I can bring to a data or technology team.</p></div>
+        <div class="skill-grid">
+          <div class="panel skill-card"><h3>Attention to detail</h3><p>Practised through data entry, checking records and following quality procedures.</p></div>
+          <div class="panel skill-card"><h3>Communication</h3><p>Developed through customer service, sales conversations and collaborative project work.</p></div>
+          <div class="panel skill-card"><h3>Teamwork</h3><p>Built by coordinating with colleagues and collaborating on a university web application.</p></div>
+          <div class="panel skill-card"><h3>Prioritisation</h3><p>Strengthened by balancing tasks and responding to changing needs in busy work settings.</p></div>
+          <div class="panel skill-card"><h3>Quality mindset</h3><p>Learned through routine checks, consistent processes and reliable record keeping.</p></div>
+          <div class="panel skill-card"><h3>Learning mindset</h3><p>Demonstrated by continuing technical study, completing courses and taking part in development programmes.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap">
+        <div class="contact-box">
+          <div><div class="kicker">07 / Get in touch</div><h2 class="section-title">Let's connect.</h2><p>I’m interested in Data Science, Data Analytics, Business Intelligence, reporting and technology placement opportunities for 2027.</p></div>
+          <div class="contact-links">
+            <a class="btn btn-primary" href="mailto:elizebethglory238@gmail.com">Email me</a>
+            <a class="btn btn-secondary" href="https://www.linkedin.com/in/glory-elizebeth-saji-425ba0321/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+          </div>
+        </div>
+        <p class="small-note">This portfolio is a work in progress. Project links, certificate links and a CV download can be added when the relevant files and public links are ready.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="wrap">© <span id="year"></span> Glory Elizebeth Saji · Data Science Portfolio</div></footer>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>
